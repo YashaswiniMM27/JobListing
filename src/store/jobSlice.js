@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     jobs: [],
     selectedJob: null,
+    loading: false,
+    error: null,
 };
 
 const jobSlice = createSlice({
@@ -15,8 +17,14 @@ const jobSlice = createSlice({
         selectJob: (state, action) => {
             state.selectedJob = action.payload;
         },
+        setLoading: (state, action) => {
+            state.loading = action.payload;
+        },
+        setError: (state, action) => {
+            state.error = action.payload;
+        },
     },
 });
 
-export const { setJobs, selectJob } = jobSlice.actions;
+export const { setJobs, selectJob, setLoading, setError } = jobSlice.actions;
 export default jobSlice.reducer;
