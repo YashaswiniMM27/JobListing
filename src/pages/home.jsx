@@ -18,7 +18,7 @@ function Home() {
                 dispatch(setJobs(data));
             }
             catch (error){
-                dispatch(setError('Failed to detch jobs'));
+                dispatch(setError('Failed to fetch jobs'));
             }
             finally{
                 dispatch(setLoading(false));
