@@ -10,9 +10,11 @@
 .jobItem h3 {
     margin: 0;
     font-size: 18px;
+    color: black;
 }
 
 .jobItem p {
     color: #666;
     font-size: 14px;
+    color: black;
 }
