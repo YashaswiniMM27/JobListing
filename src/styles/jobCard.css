@@ -1,0 +1,18 @@
+.jobItem {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.jobItem h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.jobItem p {
+    color: #666;
+    font-size: 14px;
+}
