@@ -1,9 +1,11 @@
 import axios from "axios";
 
+// Create an Axios instance with the base URL for API requests
 const api = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com'
+    baseURL: 'https://jsonplaceholder.typicode.com'// Base URL for API requests
 })
 
+// Function to fetch job listings
 export const getJobListings = async () => {
     try{
         const response = await api.get('/posts');
@@ -14,6 +16,7 @@ export const getJobListings = async () => {
     }
 }
 
+// Function to fetch details for a specific job by ID
 export const getJobDetails = async (id) => {
     try{
         const response = await api.get(`/posts/${id}`);
@@ -24,12 +27,12 @@ export const getJobDetails = async (id) => {
     }
 }
 
+// Function to submit a job application
 export const postJobApplication = async (applicationData) => {
     try {
         const response = await api.post("/posts", applicationData);
         return response.data;
     } catch (error) {
-        console.error("API Error:", error.response ? error.response.data : error.message);
         throw new Error("Failed to submit job application");
     }
 };

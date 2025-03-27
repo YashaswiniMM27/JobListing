@@ -1,30 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectJob, setError, setLoading } from '../store/jobSlice';
-import { getJobDetails } from '../services/jobService';
 import { useParams } from 'react-router-dom';
 import '../styles/jobDetails.css'
 import { Link } from 'react-router-dom';
+import { fetchJobDetails } from '../viewmodel/jobViewModel';
 
+/*
+ * JobDetails component displays detailed information about a selected job.
+ * Fetches job details from the API and handles loading and error states.
+ */
 function JobDetails() {
-    const { id } = useParams();
-    const dispatch = useDispatch();
-    const { selectedJob, loading, error } = useSelector((state) => state.job);
+    const { id } = useParams(); // Get job id from URL parameters
+    const dispatch = useDispatch();  // Dispatch actions to Redux store
+    const { selectedJob, loading, error } = useSelector((state) => state.job);  // Get job details, loading, and error states from Redux store
 
+        // Fetch job details when component mounts or job id changes using view-model
     useEffect(() => {
-        const fetchJobDetails = async () => {
-            dispatch(setLoading(true));
-            try {
-                const data = await getJobDetails(id);
-                dispatch(selectJob(data));
-            } catch (err) {
-                dispatch(setError('Failed to fetch job details'));
-            } finally {
-                dispatch(setLoading(false));
-            }
-        };
-
-        fetchJobDetails();
+        dispatch(fetchJobDetails(id));
     }, [dispatch, id]);
 
     if (loading) return <div className="loading">Loading...</div>;

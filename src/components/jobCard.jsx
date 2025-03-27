@@ -2,6 +2,11 @@ import React from 'react';
 import '../styles/jobCard.css';
 import { Link } from 'react-router-dom';
 
+/*
+ * Renders a job card with a title and description.
+ * Clicking the card navigates to the job details page.
+ */
+
 function JobCard({ job }) {
     return (
             <div className="jobItem">

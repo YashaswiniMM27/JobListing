@@ -1,6 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+/*
+ * Navbar component displaying logo, title, and About link.
+ * The logo and title scroll to the top of the page when clicked.
+ * The About link opens the About page in a new tab.
+ */
 
 function Navbar() {
     return (

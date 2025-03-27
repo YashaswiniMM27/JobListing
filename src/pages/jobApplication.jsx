@@ -5,34 +5,32 @@ import { getJobDetails, postJobApplication } from "../services/jobService";
 import { selectJob, setLoading, setError } from "../store/jobSlice";
 import '../styles/jobApplication.css'
 import { Link } from "react-router-dom";
+import { fetchJobDetails } from "../viewmodel/jobViewModel";
 
-    const JobApplication = () => {
 
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+/**
+ * JobApplication component allows users to apply for a specific job by filling out a form.
+ * Fetches job details and handles form submission.
+ */
+    function JobApplication(){
 
-    const { selectedJob, loading, error } = useSelector((state) => state.job);
+    const { id } = useParams();// Get job id from the URL
+    const navigate = useNavigate(); // Navigation hook to redirect after submission
+    const dispatch = useDispatch();// Dispatch actions to Redux store
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [coverLetter, setCoverLetter] = useState("");
+    const { selectedJob, loading, error } = useSelector((state) => state.job);// Get selected job, loading, and error state
 
+    const [name, setName] = useState("");// State for storing name
+    const [email, setEmail] = useState("");// State for storing email
+    const [coverLetter, setCoverLetter] = useState("");// State for storing cover letter
+
+    // Fetch job details when the component mounts using view-model
     useEffect(() => {
-        const fetchJobDetails = async () => {
-        dispatch(setLoading(true));
-        try {
-            const response = await getJobDetails(id);
-            dispatch(selectJob(response));
-        } catch (err) {
-            dispatch(setError("Failed to fetch job details"));
-        } finally {
-            dispatch(setLoading(false));
-        }
-        };
-        fetchJobDetails();
+        dispatch(fetchJobDetails(id));
     }, [id, dispatch]);
+    
 
+     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,15 +42,18 @@ import { Link } from "react-router-dom";
         };
 
         try {
-        await postJobApplication(applicationData);
-        alert("Application submitted successfully!");
-        navigate("/");
+        await postJobApplication(applicationData);// Post application data to API
+        alert("Application submitted successfully!");// Show success alert
+        navigate("/"); // Redirect to the home page after submission
         } catch (err) {
-        dispatch(setError("Failed to submit application"));
+        dispatch(setError("Failed to submit application")); // Handle submission errors
         }
     };
 
+        // Show loading state while data is being fetched
     if (loading) return <div className="loading">Loading...</div>;
+
+        // Show loading state while data is being fetched
     if (error) return <div className="error">{error}</div>;
 
     return (

@@ -1,5 +1,8 @@
 import React from 'react'
 
+/*
+ * About component providing an overview of Jobsphere's mission and features.
+ */
 function About() {
   return (
     <div className='aboutPage'>
