@@ -32,10 +32,10 @@ function JobDetails() {
 
     return (
         <>
-                <Link className='back' to="/" style={{ textDecoration: 'none' }}>
-                    <img className="backBtn" src="/assets/backButton.png" alt="back" />
-                    <div className="backTxt">Back</div>
-                </Link>
+            <Link className='back' to="/" style={{ textDecoration: 'none' }}>
+                <img className="backBtn" src="/assets/backButton.png" alt="back" />
+                <div className="backTxt">Back</div>
+            </Link>
             <div className="descriptionBox">
                 {selectedJob ? (
                     <div className="jobDescription">
@@ -45,7 +45,11 @@ function JobDetails() {
                 ) : (
                     <div>No job details available</div>
                 )}
-                <button className="applyBtn">Apply</button>
+                <Link className="applyBtnContainer" to={selectedJob ? `/apply/${selectedJob.id}` : "#"}>
+                    <button disabled={!selectedJob}>
+                        Apply
+                    </button>
+                </Link>
             </div>
         </>
     );

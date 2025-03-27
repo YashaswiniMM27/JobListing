@@ -24,3 +24,12 @@ export const getJobDetails = async (id) => {
     }
 }
 
+export const postJobApplication = async (applicationData) => {
+    try {
+        const response = await api.post("/posts", applicationData);
+        return response.data;
+    } catch (error) {
+        console.error("API Error:", error.response ? error.response.data : error.message);
+        throw new Error("Failed to submit job application");
+    }
+};
