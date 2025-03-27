@@ -6,7 +6,14 @@ html, body{
     background-color: rgb(113, 122, 148);
 }
 
+a{
+    text-decoration: none;
+}
+
 .navbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,7 +55,7 @@ html, body{
     }
 }
 
-.title span{
+.titleText{
     font-size: 26px;
     padding: 0 30px;
     color: rgb(255, 255, 255);
@@ -56,7 +63,7 @@ html, body{
 }
 
 @media (max-width: 768px) {
-    .title span{
+    .titleText{
         font-size: 20px;
         padding: 0 15px;
         -webkit-text-stroke: 0.8px black;
@@ -74,5 +81,24 @@ html, body{
     .about{
         font-size: 16px;
         -webkit-text-stroke: 0.8px black;
+    }
+}
+
+.aboutPage{
+    padding: 40px;
+    font-size: 26px;
+    font-weight: 500;
+    color: white;
+    -webkit-text-stroke: 0.4px black;
+}
+
+
+@media (max-width: 768px) {
+    .aboutPage{
+        padding: 30px;
+        font-size: 22px;
+        font-weight: 500;
+        color: white;
+        -webkit-text-stroke: 0.4px black;
     }
 }

@@ -28,8 +28,8 @@ function Home() {
         fetchJobs();
     }, [dispatch])
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (loading) return <div className='loading'>Loading...</div>;
+    if (error) return <div className='error'>{error}</div>;
 
     return (
         <div className='home'>
