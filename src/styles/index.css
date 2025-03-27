@@ -1,6 +1,8 @@
 html, body{
     padding: 0;
     margin: 0;
+    height: 100%;
+    overflow: hidden;
     font-family: "Winky Sans", sans-serif;
     font-style: normal;
     background-color: rgb(113, 122, 148);

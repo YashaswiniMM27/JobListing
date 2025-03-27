@@ -1,0 +1,21 @@
+.errorPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+}
+
+.errorPage img {
+    height: 280px;
+}
+
+@media (max-width: 768px) {
+    .errorPage img {
+        height: 220px;
+    }
+}
