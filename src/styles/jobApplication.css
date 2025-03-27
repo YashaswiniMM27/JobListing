@@ -17,6 +17,13 @@
     font-weight: 600;
 }
 
+@media (max-width: 768px) {
+    .backFromApplication {
+        top: 50px;
+        left: 40px;
+    }
+}
+
 .backTxtApplication {
     font-size: 20px;
     text-align: center;
@@ -51,6 +58,12 @@
     margin-bottom: 20px;
     color: rgb(255, 255, 255);
     -webkit-text-stroke: 1.2px black;
+}
+
+@media (max-width: 768px) {
+    .jobApplication h1 {
+        margin-top: 30px;
+    }
 }
 
 form {
