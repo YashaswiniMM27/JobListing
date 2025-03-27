@@ -4,6 +4,7 @@ import { selectJob, setError, setLoading } from '../store/jobSlice';
 import { getJobDetails } from '../services/jobService';
 import { useParams } from 'react-router-dom';
 import '../styles/jobDetails.css'
+import { Link } from 'react-router-dom';
 
 function JobDetails() {
     const { id } = useParams();
@@ -30,17 +31,23 @@ function JobDetails() {
     if (error) return <div className="error">{error}</div>;
 
     return (
-        <div className='descriptonBox'>
-            {selectedJob ? (
-                <div className='jobDescription'>
-                    <h1>{selectedJob.title}</h1>
-                    <p>{selectedJob.body}</p>
-                </div>
-            ) : (
-                <div>No job details available</div>
-            )}
-            <button className='applyBtn'>Apply</button>
-        </div>
+        <>
+                <Link className='back' to="/" style={{ textDecoration: 'none' }}>
+                    <img className="backBtn" src="/assets/backButton.png" alt="back" />
+                    <div className="backTxt">Back</div>
+                </Link>
+            <div className="descriptionBox">
+                {selectedJob ? (
+                    <div className="jobDescription">
+                        <h1>{selectedJob.title}</h1>
+                        <p>{selectedJob.body}</p>
+                    </div>
+                ) : (
+                    <div>No job details available</div>
+                )}
+                <button className="applyBtn">Apply</button>
+            </div>
+        </>
     );
 }
 
