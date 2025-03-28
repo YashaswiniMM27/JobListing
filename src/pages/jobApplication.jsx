@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { fetchJobDetails } from "../viewmodel/jobViewModel";
 
 
-/**
+/*
  * JobApplication component allows users to apply for a specific job by filling out a form.
  * Fetches job details and handles form submission.
  */
@@ -23,6 +23,7 @@ import { fetchJobDetails } from "../viewmodel/jobViewModel";
     const [name, setName] = useState("");// State for storing name
     const [email, setEmail] = useState("");// State for storing email
     const [coverLetter, setCoverLetter] = useState("");// State for storing cover letter
+    const [resume, setResume] = useState("");// State for storing resume
 
     // Fetch job details when the component mounts using view-model
     useEffect(() => {
@@ -35,10 +36,10 @@ import { fetchJobDetails } from "../viewmodel/jobViewModel";
         e.preventDefault();
 
         const applicationData = {
-        name,
-        email,
-        coverLetter,
-        jobId: id,
+            name,
+            email,
+            coverLetter,
+            jobId: id,
         };
 
         try {
@@ -98,7 +99,36 @@ import { fetchJobDetails } from "../viewmodel/jobViewModel";
                     required
                 />
                 </div>
-                
+
+                <div className="resumeField">
+                    <label htmlFor="resume">Upload Resume (PDF only)</label>
+                    <input
+                        className="resume"
+                        type="file"
+                        id="resume"
+                        accept=".pdf"
+                        onChange={(e) => setResume(e.target.files[0])}
+                        required
+                        style={{
+                            position: 'absolute',
+                            width: '1px',
+                            height: '1px',
+                            opacity: 0,
+                            pointerEvents: 'none',
+                        }}
+                    />
+
+                    <button
+                        type="button"
+                        onClick={() => document.getElementById('resume').click()}
+                        className="chooseFileBtn"
+                    >
+                        <img src="/assets/download.png" alt="download" />
+                    </button>
+
+                    {resume && <p>{resume.name}</p>}
+                </div>
+
                 <button className="submitBtn" type="submit">Submit Application</button>
             </form>
             </>

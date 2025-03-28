@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom';
 function JobCard({ job }) {
     return (
             <div className="jobItem">
-            <Link to={`/job-details/${job.id}`} style={{ textDecoration: 'none' }}>
+            <Link className='jobItemContent' to={`/job-details/${job.id}`} style={{ textDecoration: 'none' }}>
                 <h3>{job.title}</h3>
                 <p>{job.body}</p>
+                <button>View Details</button>
             </Link>
             </div>
     );
